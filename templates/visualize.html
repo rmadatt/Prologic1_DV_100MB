@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizations</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1, h2 { text-align: center; }
+        img { max-width: 100%; margin: 20px 0; }
+        .insights, .anomalies { margin: 20px 0; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Data Visualizations</h1>
+    {% if img_files.bar %}
+        <h2>Bar Chart: Mean Values</h2>
+        <img src="data:image/png;base64,{{ img_files.bar }}" alt="Bar Chart">
+    {% endif %}
+    {% if img_files.scatter %}
+        <h2>Scatter Plot</h2>
+        <img src="data:image/png;base64,{{ img_files.scatter }}" alt="Scatter Plot">
+    {% endif %}
+    {% if img_files.heatmap %}
+        <h2>Correlation Heatmap</h2>
+        <img src="data:image/png;base64,{{ img_files.heatmap }}" alt="Heatmap">
+    {% endif %}
+    <h2>AI Insights</h2>
+    <div class="insights">
+        <ul>
+        {% for insight in insights %}
+            <li>{{ insight.Column }}: Mean = {{ insight.Mean | round(2) }}, Median = {{ insight.Median | round(2) }}, Std = {{ insight.Std | round(2) }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <h2>Anomaly Detection</h2>
+    <div class="anomalies">
+        <p>{{ anomalies }}</p>
+    </div>
+    <a href="/">Upload another file</a>
+</body>
+</html>
