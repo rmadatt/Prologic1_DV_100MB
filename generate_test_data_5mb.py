@@ -25,9 +25,6 @@ df.loc[np.random.choice(n_rows, 200), 'Income'] = np.random.uniform(100000, 1500
 df.loc[np.random.choice(n_rows, 100), 'Hours_Worked'] = np.random.uniform(80, 100, 100)  # Extreme hours
 
 # Save to CSV
-output_file = 'test_data_5mb.csv'
+output_file = "C:/Users/nuraa/Documents/test_data_5mb.csv"
 df.to_csv(output_file, index=False)
-
-# Check file size
-file_size = os.path.getsize(output_file) / (1024 * 1024)  # Size in MB
-print(f"Generated CSV file: {output_file}, Size: {file_size:.2f} MB")
+print(f"CSV file saved at: {output_file}")
