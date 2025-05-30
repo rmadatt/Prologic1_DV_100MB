@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Columns</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1 { text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        select { width: 100%; padding: 8px; }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Select Columns for Scatter Plot</h1>
+    <form method="POST" action="/visualize">
+        <input type="hidden" name="filename" value="{{ filename }}">
+        <div class="form-group">
+            <label for="col1">X-Axis Column:</label>
+            <select id="col1" name="col1" required>
+                {% for col in columns %}
+                    <option value="{{ col }}">{{ col }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="col2">Y-Axis Column:</label>
+            <select id="col2" name="col2" required>
+                {% for col in columns %}
+                    <option value="{{ col }}">{{ col }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Generate Visualizations</button>
+    </form>
+</body>
+</html>
